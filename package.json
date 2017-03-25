@@ -1,0 +1,22 @@
+{
+  "name": "temp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js --presets es2015,stage-2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "johnny-five": "^0.10.6",
+    "pubnub": "^4.5.0",
+    "pug": "^2.0.0-beta11",
+    "serialport": "^4.0.7"
+  }
+}

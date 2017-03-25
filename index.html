@@ -1,0 +1,44 @@
+<html>
+  <head>
+  <title>Temp And Hum</title>
+  <style>
+    h1 {
+      font-family: arial;
+    }
+  </style>
+  </head>
+  <body>
+    <h1 id="tempDisplay"></h1>
+    <h1 id="humitity"></h1>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.5.0.js"></script>
+    <script>
+      pubnub = new PubNub({
+        publishKey : 'pub-c-0107042d-cac3-4854-9323-b2fd0badf295',
+        subscribeKey : 'sub-c-cfaa271a-119f-11e7-b568-0619f8945a4f'
+      });
+
+      pubnub.addListener({
+        status: function(statusEvent) {
+
+        },
+        message: function(message) {
+            console.log("New Message!!", message);
+            document.getElementById('tempDisplay').innerHTML  = "temperature: "
+              + message.message.temp + " C";
+            if(message.message.hum != undefined) {
+              document.getElementById('humitity').innerHTML  = "humitity:"
+                + message.message.hum + "%d";
+            }
+
+        },
+        presence: function(presenceEvent) {
+
+        }
+      })
+
+      pubnub.subscribe({
+        channels: ['temp']
+      });
+    </script>
+  </body>
+</html>
